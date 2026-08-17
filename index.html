@@ -1108,7 +1108,17 @@ function closeModal(){
 function closeModalOnOverlay(e){
   if(e.target===document.getElementById('waitlist-modal')) closeModal();
 }
-async function handleSubmit(e){
+(function captureUTMs() {
+  const params = new URLSearchParams(window.location.search);
+  const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  utmKeys.forEach(key => {
+    const value = params.get(key);
+    if (value) {
+      sessionStorage.setItem(key, value);
+    }
+  });
+})();
+  async function handleSubmit(e){
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('.form-submit');
