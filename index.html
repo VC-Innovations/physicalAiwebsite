@@ -1130,6 +1130,10 @@ function closeModalOnOverlay(e){
     lastName:     form.querySelector('input[placeholder="Smith"]').value,
     jobTitle:     form.querySelector('input[placeholder="e.g. VP of Operations"]').value,
     email:        form.querySelector('input[type="email"]').value,
+    utmSource: sessionStorage.getItem('utm_source') || 'direct',
+      utmMedium: sessionStorage.getItem('utm_medium') || 'none',
+      utmCampaign: sessionStorage.getItem('utm_campaign') || 'none',
+      utmContent: sessionStorage.getItem('utm_content') || '',
     company:      form.querySelector('input[placeholder="Company name"]').value,
     interestType: form.querySelector('input[name="type"]:checked')?.value || ''
   };
