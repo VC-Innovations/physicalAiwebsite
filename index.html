@@ -1131,6 +1131,14 @@ async function handleSubmit(e){
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
     });
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'waitlist_signup', {
+        event_category: 'engagement',
+        event_label: data.jobTitle || 'unknown',
+        value: 1,
+      });
+    }
   } catch(err) {
     console.log('Submission error:', err);
   }
